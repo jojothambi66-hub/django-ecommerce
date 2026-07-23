@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Your Oderes</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">Order-Detail</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container text-center d-flex flex-column align-items-center w-50 p-5 mb-5 mt-5 text-light border border-1 shadow bg-secondary">
+    <h1><b>Customer Name: {{user.username}}</b></h1>
+    {% for i in order %}
+    <div class="card mb-3" style="max-width: 540px;">
+        {% for j in i.products.all %}
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{j.product.images.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+          <h1 class="card-title"><b>Product Name: </b>{{j.product.name}}</h1>
+        <h3 class="card-text"><b>Price: </b>{{j.product.price}}</h3>
+          <h3 class="card-text"><b>Quantity: </b>{{j.quantity}}</h3>
+          <h3 class="card-text"><b>Ordered Date: </b>{{i.ordered_date}}</h3>
+          <h3 class="card-text"><b>Delivery Status: </b>{{i.delivery_satus}}</h3>
+      </div>
+    </div>
+  </div>
+        {% endfor %}
+</div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

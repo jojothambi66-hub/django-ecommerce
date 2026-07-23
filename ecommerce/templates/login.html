@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<style>
+
+</style>
+{%load crispy_forms_tags %}
+{% block content %}
+<div class="container text-light text-center w-50 p-5 mb-5 mt-5 bg-secondary border border-danger border-rounded border-shadow">
+  <h1 style="text-shadow:3px 3px white">SIGN IN</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit">
+  </form>
+  {% if messages %}
+  {% for m in messages %}
+  <b style="color:blue">{{m}}</b>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}
